@@ -109,4 +109,4 @@ class TeslaCAN:
               "SCCM_rightStalkStatus": position,
               }
 
-    return self.pt_packer.make_can_msg("SCCM_rightStalk", CANBUS.radar, values)
+    return self.pt_packer.make_can_msg("SCCM_rightStalk", CANBUS.vehicle, values)
