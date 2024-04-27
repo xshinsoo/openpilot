@@ -272,10 +272,10 @@ class Controls:
         self.events.add(EventName.laneChangeBlocked)
       else:
         if direction == LaneChangeDirection.left:
-          sself.events.add(EventName.preLaneChangeLeft) if lane_change_set_timer == 0 or lc_prev else \
+          self.events.add(EventName.preLaneChangeLeft) if lane_change_set_timer == 0 or lc_prev else \
             self.events.add(EventName.laneChange)
         else:
-          sself.events.add(EventName.preLaneChangeRight) if lane_change_set_timer == 0 or lc_prev else \
+          self.events.add(EventName.preLaneChangeRight) if lane_change_set_timer == 0 or lc_prev else \
             self.events.add(EventName.laneChange)
     elif self.sm['modelV2'].meta.laneChangeState in (LaneChangeState.laneChangeStarting,
                                                     LaneChangeState.laneChangeFinishing):
