@@ -266,16 +266,15 @@ class Controls:
     lane_change_set_timer = 0
     if self.sm['modelV2'].meta.laneChangeState == LaneChangeState.preLaneChange:
       direction = self.sm['modelV2'].meta.laneChangeDirection
-      lc_prev = self.sm['modelV2'].meta.laneChangePrev
       if (CS.leftBlindspot and direction == LaneChangeDirection.left) or \
          (CS.rightBlindspot and direction == LaneChangeDirection.right):
         self.events.add(EventName.laneChangeBlocked)
       else:
         if direction == LaneChangeDirection.left:
-          self.events.add(EventName.preLaneChangeLeft) if lane_change_set_timer == 0 or lc_prev else \
+          self.events.add(EventName.preLaneChangeLeft) if lane_change_set_timer == 0 else \
             self.events.add(EventName.laneChange)
         else:
-          self.events.add(EventName.preLaneChangeRight) if lane_change_set_timer == 0 or lc_prev else \
+          self.events.add(EventName.preLaneChangeRight) if lane_change_set_timer == 0 else \
             self.events.add(EventName.laneChange)
     elif self.sm['modelV2'].meta.laneChangeState in (LaneChangeState.laneChangeStarting,
                                                     LaneChangeState.laneChangeFinishing):
